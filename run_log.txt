@@ -1,0 +1,61 @@
+
+=== Lemma 1 - strong coupling ===
+  [PASS] (a) 6N/(g^4 c_N) <= beta*  iff  g >= g0(N);  1 - c2 beta* >= 1/2
+  [PASS] (b) plaquette adjacency degree <= 12  (max degree 12)
+  [PASS] (c) connected plaquette sets of size n through p0 <= (12e)^n  (counts n=1..4: 1, 12, 158, 2146)
+  [PASS] (d) #plaquettes containing a link of C <= 8(r+s)
+  [PASS] (e) min support of Z_N 2-chain with boundary C equals rs  (N=2,1x1:1; N=2,1x2:2; N=2,2x2:4; N=2,2x3:6; N=2,3x3:9; N=3,1x1:1; N=3,1x2:2; N=3,2x2:4; N=3,2x3:6; N=3,3x3:9)
+  [PASS] (f) 16(r+s) q^{rs} <= M e^{-sigma rs} on a grid
+  [PASS] (g) <W(C) chi(U_p1)> = 0  (no spanning chain on {p1})  (-0.0002 +/- 0.0008)
+  [PASS] (g) <W(C) chi(U_p1) chi(U_p2)> = 1/4  (spanning pair)  (0.2510 +/- 0.0008)
+  [PASS] (h) illustration: gap >= 1/2 uniformly in chain length (beta = 0.05)  (gaps 0.983, 0.997, 1.002, 0.964, 0.979)
+  -> Lemma 1: 9/9 checks passed
+
+=== Lemma 2 - Hamiltonian-Euclidean bridge ===
+  [PASS] Gate: T_tau is positive semidefinite
+  [PASS] Gate: reflection Gram matrices <phi_a, T^j phi_b> are PSD (j = 1..5)
+  [PASS] (i) ||T_tau^{t/tau} - e^{-tH}|| -> 0, second order (ratio ~ 4 per halving)  (errors 2.9e-03, 7.4e-04, 1.9e-04, 4.7e-05, 1.2e-05)
+  [PASS] (i) top eigenvector of T_tau -> ground state of H  (|<.,.>| = 1.000000000)
+  [PASS] (i) lim <F_0 G_t>_tau = <Omega, F e^{-t(H-E0)} G Omega>  (0.332527 vs 0.332525)
+  [PASS] (ii) every truncated correlation decays at rate >= delta  (delta = 0.37326; rates cos th1: 0.37326, sin th1: 0.37326, cos(th1-th2): 1.42927, cos 2th1: 1.21000, sin(th1+th2): 1.21000, random combination: 0.37326)
+  [PASS] (ii) inf over observables of the decay rate equals delta  (min rate 0.37326)
+  -> Lemma 2: 7/7 checks passed
+
+=== Lemma 3 - exact 2D matching ===
+  [PASS] heat kernel: probability density, int K_t chi_n = n e^{-t C_n/2}  (t=0.2: norm 1.00000000; t=0.7: norm 1.00000000; t=1.5: norm 1.00000000)
+  [PASS] gluing: K_s * K_t = K_{s+t} (character test)  (n=2: 1.0962 vs 1.0976; n=3: 0.6036 vs 0.6057)
+  [PASS] (i) blocking: b^2 fine plaquettes carry K_{b^2 t}  (b=2,n=2: 1.2737 vs 1.2753; b=2,n=3: 0.9008 vs 0.9036; b=3,n=2: 0.7262 vs 0.7266; b=3,n=3: 0.2022 vs 0.2016)
+  [PASS] (ii) <W(C)> = exp(-t c_N |A(C)| / 2)  (A=1: 0.8607 vs 0.8607; A=2: 0.7409 vs 0.7408; A=4: 0.5491 vs 0.5488; A=6: 0.4064 vs 0.4066)
+  [PASS] (iii) k = max{0, ceil(ln(t0/t)/ln b^2)} reaches t0 and is minimal
+  -> Lemma 3: 5/5 checks passed
+
+=== Lemmas 4 and 5 - matching and gap scaling (implications) ===
+  [PASS] b1 = (34/3) N^2/(16 pi^2)^2 = 17 N^2/(384 pi^4)
+  [PASS] one-loop vs two-loop stopping scales differ by an unbounded log(1/g^2) term  (differences 0.584, 1.015, 1.357, 1.599, 1.787, 1.941)
+  [PASS] descent: b^{-k*} prod(1-eta) delta^(k*) <= delta^(0) <= b^{-k*} prod(1+eta) delta^(k*)
+  [PASS] Lemma 4: delta_L(g) >= C4 a(g)  (min (delta/a)/C4 = 1.503)
+  [PASS] Lemma 5 (ii): C4 <= delta_L(g)/a(g) <= C5  (max (delta/a)/C5 = 0.459)
+  [PASS] Lemma 5 (i): delta_L(g) > 0 for all g > 0 (Lemma 1 for g >= g0)
+  [PASS] sanity: without G4 (eta_k = 1/2 at every scale) the bound C4 a(g) fails  (delta/a = 1.537e-03 < C4 = 1.908e+00)
+  -> Lemmas 4 and 5: 7/7 checks passed
+
+=== Theorem - conditional continuum reconstruction (logical steps) ===
+  [PASS] Step 4 (OS2): reflection-positive Gram matrices stay PSD along a convergent sequence
+  [PASS] Step 6 (OS4): unique vacuum => truncated correlations decay; degenerate => they do not  (unique 5.1e-12, degenerate 2.6e-02)
+  [PASS] Steps 7-8: Euclidean correlations of a generating family reconstruct the gap (GEVP)  (reconstructed 0.800000, true gap 0.800000)
+  [PASS] Steps 7-8: an incomplete observable family gives only an upper bound (why C1 needs the full algebra)  (6 observables: 1.7662 >= true gap 0.8000)
+  [PASS] Step 8: |C(t)| <= C e^{-mt} for all large t  <=>  spectral measure vanishes on (0, m)
+  [PASS] Scope: a clustering rate m is a lower bound on the spectral threshold  (m = 0.5, true threshold 0.800)
+  -> Theorem: 6/6 checks passed
+
+=== Summary ===
+  PASS  Lemma 1 - strong coupling  (1.1 s)
+  PASS  Lemma 2 - Hamiltonian-Euclidean bridge  (0.3 s)
+  PASS  Lemma 3 - exact 2D matching  (5.7 s)
+  PASS  Lemmas 4 and 5 - matching and gap scaling (implications)  (0.1 s)
+  PASS  Theorem - conditional continuum reconstruction (logical steps)  (0.0 s)
+
+Not validated (open hypotheses of the paper): certified Yarotsky constants and the link-embedding
+estimate (G1), the expansion E(g,K), the RG hypotheses R, R', Y, Y', AF, AF+-, G4, G5, and the
+continuum hypotheses C1-C4. The checks above validate proved statements, the algebra of every
+implication, and finite-dimensional versions of the operator arguments.
